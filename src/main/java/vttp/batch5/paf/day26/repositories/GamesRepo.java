@@ -16,6 +16,10 @@ public class GamesRepo {
     @Autowired
     private MongoTemplate template;
 
+    public long getTotalGamesCount() {
+        return template.count(new Query(), C_GAMES);
+    }
+
     public List<Document> findGameByName(String name) {
         return findGameByName(name, 25, 0);
     }

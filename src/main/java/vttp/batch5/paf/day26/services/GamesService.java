@@ -21,11 +21,12 @@ public class GamesService {
     @Autowired
     CommentsRepo commentsRepo;
 
+    public Long getTotalGamesCount() {
+        return gamesRepo.getTotalGamesCount();
+    }
+
     public String getHighestRatedGame() {
         Document highestRatedGame = gamesRepo.findHighestRatedGame();
-        
-        // Check if there are games in DB
-        // return 404 if none found
 
         int gid = highestRatedGame.getInteger("gid");
         
@@ -58,4 +59,8 @@ public class GamesService {
 
         return j.toString();
     }
+
+    // public String getGameByName(String q) {
+    //     //int gid = gamesRepo.findGameByName(q).getInteger("gid");
+    // }
 }
